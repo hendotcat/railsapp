@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("HeartsChannel", {
+const heartsChannel = consumer.subscriptions.create("HeartsChannel", {
   connected() {
     console.log("connected to hearts channel")
   },
@@ -13,3 +13,9 @@ consumer.subscriptions.create("HeartsChannel", {
     console.log("received", data)
   },
 });
+
+document.addEventListener("click", event => {
+  event.preventDefault()
+  console.log("click")
+  heartsChannel.send({})
+})
