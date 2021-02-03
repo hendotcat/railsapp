@@ -1,5 +1,8 @@
 import consumer from "./consumer"
 
+let index = 0
+const emojis = ["♥️", "🧡", "💛", "💚", "💙", "💜"]
+
 const heartsChannel = consumer.subscriptions.create("HeartsChannel", {
   connected() {
     console.log("connected to hearts channel")
@@ -10,7 +13,19 @@ const heartsChannel = consumer.subscriptions.create("HeartsChannel", {
   },
 
   received(data) {
-    console.log("received", data)
+    const hearts = document.querySelector(".hearts")
+    const heart = document.createElement("li")
+    heart.className = "heart"
+    heart.innerText = emojis[index]
+
+    index += 1
+    index %= emojis.length
+
+    hearts.appendChild(heart)
+
+    setTimeout(() => {
+      hearts.removeChild(heart)
+    }, Math.pow(2, 10))
   },
 });
 
@@ -19,3 +34,4 @@ document.addEventListener("click", event => {
   console.log("click")
   heartsChannel.send({})
 })
+

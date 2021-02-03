@@ -4,18 +4,80 @@
   width: 100vw;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+}
 
-  h1 {
-    display: flex;
-    font-family: "Futura", sans-serif;
-    font-size: 4rem;
+h1 {
+  display: flex;
+  font-family: "Futura", sans-serif;
+  font-size: 4rem;
+
+  $c: black;
+  text-shadow:
+    -0.02em -0.02em 0.04em $c,
+     0.00em -0.02em 0.04em $c,
+     0.02em -0.02em 0.04em $c,
+    -0.02em  0.00em 0.04em $c,
+     0.02em  0.00em 0.04em $c,
+    -0.02em  0.02em 0.04em $c,
+     0.00em  0.02em 0.04em $c,
+     0.02em  0.02em 0.04em $c;
+}
+
+h1 span:nth-child(1) {
+  color: indianred;
+}
+
+h1 span:nth-child(2) {
+  color: deepskyblue;
+}
+
+.hearts {
+  list-style-type: none;
+  margin: 0;
+}
+
+@keyframes float {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
   }
 
-  h1 span:nth-child(1) {
-    color: indianred;
+  50% {
+    opacity: 1;
   }
 
-  h1 span:nth-child(2) {
-    color: deepskyblue;
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(0, -8rem);
   }
 }
+
+.heart {
+  animation-name: float;
+  animation-timing: cubic-bezier(.36,.63,.83,.67);
+  animation-duration: 1024ms;
+  animation-iteration-count: 1;
+  animation-direction: forwards;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  font-size: 2rem;
+
+  $c: black;
+  text-shadow:
+    -0.05em -0.05em 0.08em $c,
+     0.00em -0.05em 0.08em $c,
+     0.05em -0.05em 0.08em $c,
+    -0.05em  0.00em 0.08em $c,
+     0.05em  0.00em 0.08em $c,
+    -0.05em  0.05em 0.08em $c,
+     0.00em  0.05em 0.08em $c,
+     0.05em  0.05em 0.08em $c;
+
+}
+
